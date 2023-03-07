@@ -112,13 +112,6 @@
 # 분석/설계
 
 
-## AS-IS 조직 (Horizontally-Aligned)
-  ![image](https://user-images.githubusercontent.com/487999/79684144-2a893200-826a-11ea-9a01-79927d3a0107.png)
-
-## TO-BE 조직 (Vertically-Aligned)
-  ![image](https://user-images.githubusercontent.com/487999/79684159-3543c700-826a-11ea-8d5f-a3fc0c4cad87.png)
-
-
 ## Event Storming 결과
 * MSAEz 로 모델링한 이벤트스토밍 결과:  https://labs.msaez.io/#/storming/b8a9220f305f4adddc58aa6e81e80a04
 
@@ -131,17 +124,39 @@
 
 
 
-## 헥사고날 아키텍처 다이어그램 도출
-    
-![image](https://user-images.githubusercontent.com/487999/79684772-eba9ab00-826e-11ea-9405-17e2bf39ec76.png)
-
-
-    - Chris Richardson, MSA Patterns 참고하여 Inbound adaptor와 Outbound adaptor를 구분함
-    - 호출관계에서 PubSub 과 Req/Resp 를 구분함
-    - 서브 도메인과 바운디드 컨텍스트의 분리:  각 팀의 KPI 별로 아래와 같이 관심 구현 스토리를 나눠가짐
-
-
 # 구현:
+
+## 1. Saga (Pub-Sub)
+ - 영화예매 취소 가능
+ - 예매 취소시 해당 좌석이 다시 예약 가능한 상태가 됨
+ - 예약이 취소되면 재고량이 증가한다
+## 2. CQRS : 명령과 쿼리 분리
+ - 고객은 현재 예매 상태를 언제든 확인 가능해야함
+## 3. Compensation & Correlation :어떠한 이벤트로 인하여 발생한 변경사항들에 대하여 고객이 원하거나 어떠한 기술적 이유로 인하여 해당 트랜잭션을 취소해야 하는 경우 이를 원복하거나 보상해주는 처리를 Compensation 이라고 한다. 그리고 해당 취소건에 대하여 여러개의 마이크로 서비스 내의 데이터간 상관 관계를 키값으로 연결하여 취소해야 하는데, 이러한 관계값에 대한 처리를 Correlation 이라고 한다.
+ - 예매 취소시 다른 것들 모두 원복하기
+## 6. Gateway / Ingress
+ - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
+ - 주문, 상품, 배송 서비스를 분기하는 라우팅 룰을 가진 Ingress 를 생성한다
+ - Ingress 는 Kubernetes 의 스펙일 뿐, 이를 실질적으로 지원하는 ingress controller 가 필요하기 때문이다. 다행히, 우리에겐 무료로 사용할 수 있는 nginx 인그레스 프로바이더를 사용할 수 있다.
+## 7. Deploy / Pipeline
+ -
+## 8. Autoscale (HPA)
+ - 클라우드의 리소스를 잘 활용하기 위해서는 요청이 적을때는 최소한의 Pod 를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
+ - Auto Scale-Out 실습 (hpa: HorizontalPodAutoscaler 설정)
+## 9. Zero-downtime deploy (Readiness probe)
+ - 배포시 다운타임의 존재 여부를 확인하기 위하여, siege 라는 부하 테스트 툴을 사용한다.
+ - Kafka 가 설치되어있어야 한다
+## 10. Persistence Volume/ConfigMap/Secret
+ - 파일시스템 (볼륨) 연결과 데이터베이스 설정
+## 11. Self-healing (liveness probe)
+ - 셀프힐링 실습 (livenessProbe)
+## 12. Apply Service Mesh
+ - 트래픽 제어? 분산?
+## 13. Loggregation / Monitoring
+ - 마이크로서비스 통합 로깅 with EFK stack
+ - MSA 모니터링 with installing Grafana
+
+## 여기까지
 
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 스프링부트와 파이선으로 구현하였다. 구현한 각 서비스를 로컬에서 실행하는 방법은 아래와 같다 (각자의 포트넘버는 8081 ~ 808n 이다)
 
