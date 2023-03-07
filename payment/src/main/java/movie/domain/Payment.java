@@ -90,6 +90,13 @@ public class Payment  {
          });
         */
 
+        repository().findById(reservationCancelRequested.getRsvId()).ifPresent(payment->{
+            
+            repository().delete(payment);
+
+
+         });
+
         
     }
     public static void approvePayment(ReservationCreated reservationCreated){

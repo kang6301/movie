@@ -142,10 +142,15 @@ public class Reservation  {
             reservation // do something
             repository().save(reservation);
 
-
          });
         */
+        repository().findById(paymentCancelled.getRsvId()).ifPresent(reservation->{
+            
+            repository().delete(reservation);
+            ReservationCancelled reservationCancelled = new ReservationCancelled(reservation);
+            reservationCancelled.publishAfterCommit();
 
+         });
         
     }
 
