@@ -130,34 +130,56 @@
  - 영화예매 취소 가능
  - 예매 취소시 해당 좌석이 다시 예약 가능한 상태가 됨
  - 예약이 취소되면 재고량이 증가한다
+ - : 최종모델에서 Pub/Sub으로 연결된거 보여줌. kafka 로그를 보여주던가.
 ## 2. CQRS : 명령과 쿼리 분리
  - 고객은 현재 예매 상태를 언제든 확인 가능해야함
  - : View의 CQRS 복붙 및 설명
 ## 3. Compensation & Correlation 
  -어떠한 이벤트로 인하여 발생한 변경사항들에 대하여 고객이 원하거나 어떠한 기술적 이유로 인하여 해당 트랜잭션을 취소해야 하는 경우 이를 원복하거나 보상해주는 처리를 Compensation 이라고 한다. 그리고 해당 취소건에 대하여 여러개의 마이크로 서비스 내의 데이터간 상관 관계를 키값으로 연결하여 취소해야 하는데, 이러한 관계값에 대한 처리를 Correlation 이라고 한다.
  - 예매 취소시 다른 것들 모두 원복하기
- - : 리뷰생성/삭제에 따른 리뷰Cnt 변화 
+ - : 리뷰생성/삭제에 따른 리뷰Cnt 변화 캡쳐
 ## 6. Gateway / Ingress
  - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
  - 주문, 상품, 배송 서비스를 분기하는 라우팅 룰을 가진 Ingress 를 생성한다
  - Ingress 는 Kubernetes 의 스펙일 뿐, 이를 실질적으로 지원하는 ingress controller 가 필요하기 때문이다. 다행히, 우리에겐 무료로 사용할 수 있는 nginx 인그레스 프로바이더를 사용할 수 있다.
+ - :게이트웨이 External IP 통해서 명령날려서 수행되는거 캡쳐
 ## 7. Deploy / Pipeline
- -
+ - :.jar 파일 생성해서 docker images 생성되어 있는거 캡쳐
 ## 8. Autoscale (HPA)
  - 클라우드의 리소스를 잘 활용하기 위해서는 요청이 적을때는 최소한의 Pod 를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
  - Auto Scale-Out 실습 (hpa: HorizontalPodAutoscaler 설정)
+ - : 소스코드 수행 및 부하테스트 캡쳐
+kubectl scale deploy gateway --replicas=2
+kubectl scale deploy message --replicas=2
+kubectl scale deploy movie --replicas=2
+kubectl scale deploy payment --replicas=2
+kubectl scale deploy reservation --replicas=2
+kubectl scale deploy review --replicas=2
+kubectl scale deploy viewpage --replicas=2
+
+kubectl autoscale deployment message --cpu-percent=50 --min=1 --max=3
+kubectl autoscale deployment movie --cpu-percent=50 --min=1 --max=3
+kubectl autoscale deployment payment --cpu-percent=50 --min=1 --max=3
+kubectl autoscale deployment reservation --cpu-percent=50 --min=1 --max=3
+kubectl autoscale deployment review --cpu-percent=50 --min=1 --max=3
+kubectl autoscale deployment viewpage --cpu-percent=50 --min=1 --max=3
 ## 9. Zero-downtime deploy (Readiness probe)
  - 배포시 다운타임의 존재 여부를 확인하기 위하여, siege 라는 부하 테스트 툴을 사용한다.
  - Kafka 가 설치되어있어야 한다
+ - :https://intro-kor.msaez.io/example-scenario/accommodation-reservation/#%C2%B7-%EB%AC%B4%EC%A0%95%EC%A7%80-%EC%9E%AC%EB%B0%B0%ED%8F%AC  참조
 ## 10. Persistence Volume/ConfigMap/Secret
  - 파일시스템 (볼륨) 연결과 데이터베이스 설정
+ - : 라운지에서 보고 따라 하던가 포기하던가;
 ## 11. Self-healing (liveness probe)
  - 셀프힐링 실습 (livenessProbe)
+ - : 서비스의 야믈파일에 livenessProbe들 캡쳐
 ## 12. Apply Service Mesh
  - 트래픽 제어? 분산?
+ - : istio 서비스 초반에 설치 후 테스트 하면서 그래프 변화되는거 캡쳐 
 ## 13. Loggregation / Monitoring
  - 마이크로서비스 통합 로깅 with EFK stack
  - MSA 모니터링 with installing Grafana
+ - : EFK등 초반에 설치 후 테스트 하면서 그래프 변화되는거 캡쳐
 
 ## 여기까지
 
