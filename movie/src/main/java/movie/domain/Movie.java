@@ -141,6 +141,12 @@ public class Movie  {
          });
         */
 
+        repository().findById(reviewCreated.getMovieId()).ifPresent(movie->{
+            
+            movie.setReviewCnt(movie.getReviewCnt() + 1);
+            repository().save(movie);
+
+         });
         
     }
     public static void updateReviewCnt(ReviewDeleted reviewDeleted){
@@ -162,6 +168,13 @@ public class Movie  {
          });
         */
 
+        repository().findById(reviewDeleted.getMovieId()).ifPresent(movie->{
+            
+            movie.setReviewCnt(movie.getReviewCnt() - 1);
+            repository().save(movie);
+
+         });
+
         
     }
     public static void confirmReserve(ReservationConfirmed reservationConfirmed){
@@ -182,7 +195,12 @@ public class Movie  {
 
          });
         */
+        repository().findById(reservationConfirmed.getMovieId()).ifPresent(movie->{
+            
+            movie.setNumberOfSeats(movie.getNumberOfSeats() - 1);
+            repository().save(movie);
 
+         });
         
     }
     public static void cancelReserve(ReservationCancelled reservationCancelled){
@@ -203,7 +221,12 @@ public class Movie  {
 
          });
         */
+        repository().findById(reservationCancelled.getMovieId()).ifPresent(movie->{
+            
+            movie.setNumberOfSeats(movie.getNumberOfSeats() + 1);
+            repository().save(movie);
 
+         });
         
     }
 

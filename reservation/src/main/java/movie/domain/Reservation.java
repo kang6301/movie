@@ -117,7 +117,12 @@ public class Reservation  {
 
          });
         */
+        repository().findById(paymentApproved.getRsvId()).ifPresent(reservation->{
+            
+            reservation.setStatus("예약완료");
+            repository().save(reservation);
 
+         });
         
     }
     public static void confirmCancel(PaymentCancelled paymentCancelled){

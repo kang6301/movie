@@ -5,6 +5,8 @@ import movie.domain.PaymentCancelled;
 import movie.PaymentApplication;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Random;
+
 import lombok.Data;
 import java.util.Date;
 
@@ -97,6 +99,12 @@ public class Payment  {
         repository().save(payment);
 
         */
+        // Random random = new Random();
+        Payment payment = new Payment();
+        // payment.setPayId(random.nextLong(1000000000));
+        payment.setRsvId(reservationCreated.getRsvId());
+        payment.setMovieId(reservationCreated.getMovieId());
+        repository().save(payment);
 
         /** Example 2:  finding and process
         
