@@ -70,18 +70,18 @@ public class Reservation  {
     public void onPostUpdate(){
 
 
-        ReservationCancelRequested reservationCancelRequested = new ReservationCancelRequested(this);
-        reservationCancelRequested.publishAfterCommit();
+        // ReservationCancelRequested reservationCancelRequested = new ReservationCancelRequested(this);
+        // reservationCancelRequested.publishAfterCommit();
 
 
 
-        ReservationConfirmed reservationConfirmed = new ReservationConfirmed(this);
-        reservationConfirmed.publishAfterCommit();
+        // ReservationConfirmed reservationConfirmed = new ReservationConfirmed(this);
+        // reservationConfirmed.publishAfterCommit();
 
 
 
-        ReservationCancelled reservationCancelled = new ReservationCancelled(this);
-        reservationCancelled.publishAfterCommit();
+        // ReservationCancelled reservationCancelled = new ReservationCancelled(this);
+        // reservationCancelled.publishAfterCommit();
 
     }
     @PrePersist
@@ -121,6 +121,8 @@ public class Reservation  {
             
             reservation.setStatus("예약완료");
             repository().save(reservation);
+            ReservationConfirmed reservationConfirmed = new ReservationConfirmed(reservation);
+            reservationConfirmed.publishAfterCommit();
 
          });
         

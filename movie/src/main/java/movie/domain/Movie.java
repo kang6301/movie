@@ -83,18 +83,18 @@ public class Movie  {
     public void onPostUpdate(){
 
 
-        MovieModified movieModified = new MovieModified(this);
-        movieModified.publishAfterCommit();
+        // MovieModified movieModified = new MovieModified(this);
+        // movieModified.publishAfterCommit();
 
 
 
-        MovieReserved movieReserved = new MovieReserved(this);
-        movieReserved.publishAfterCommit();
+        // MovieReserved movieReserved = new MovieReserved(this);
+        // movieReserved.publishAfterCommit();
 
 
 
-        MovieCancelled movieCancelled = new MovieCancelled(this);
-        movieCancelled.publishAfterCommit();
+        // MovieCancelled movieCancelled = new MovieCancelled(this);
+        // movieCancelled.publishAfterCommit();
 
     }
     @PrePersist
