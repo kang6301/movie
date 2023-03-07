@@ -84,6 +84,11 @@ public class Reservation  {
         // reservationCancelled.publishAfterCommit();
 
     }
+    @PostRemove
+    public void onPostRemove() {
+        ReservationCancelled reservationCancelled = new ReservationCancelled(this);
+        reservationCancelled.publishAfterCommit();
+    }
     @PrePersist
     public void onPrePersist(){
     }
@@ -147,8 +152,6 @@ public class Reservation  {
         repository().findById(paymentCancelled.getRsvId()).ifPresent(reservation->{
             
             repository().delete(reservation);
-            ReservationCancelled reservationCancelled = new ReservationCancelled(reservation);
-            reservationCancelled.publishAfterCommit();
 
          });
         
