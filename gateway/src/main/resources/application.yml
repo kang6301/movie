@@ -1,0 +1,98 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: payment
+          uri: http://localhost:8081
+          predicates:
+            - Path=/payments/**, 
+        - id: movie
+          uri: http://localhost:8082
+          predicates:
+            - Path=/movies/**, 
+        - id: reservation
+          uri: http://localhost:8083
+          predicates:
+            - Path=/reservations/**, 
+        - id: message
+          uri: http://localhost:8084
+          predicates:
+            - Path=/messages/**, 
+        - id: review
+          uri: http://localhost:8085
+          predicates:
+            - Path=/reviews/**, 
+        - id: viewpage
+          uri: http://localhost:8086
+          predicates:
+            - Path=, /moviewiews/**
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: payment
+          uri: http://payment:8080
+          predicates:
+            - Path=/payments/**, 
+        - id: movie
+          uri: http://movie:8080
+          predicates:
+            - Path=/movies/**, 
+        - id: reservation
+          uri: http://reservation:8080
+          predicates:
+            - Path=/reservations/**, 
+        - id: message
+          uri: http://message:8080
+          predicates:
+            - Path=/messages/**, 
+        - id: review
+          uri: http://review:8080
+          predicates:
+            - Path=/reviews/**, 
+        - id: viewpage
+          uri: http://viewpage:8080
+          predicates:
+            - Path=, /moviewiews/**
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
