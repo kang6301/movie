@@ -269,17 +269,8 @@ kubectl get svc
 ![deply2](https://user-images.githubusercontent.com/100065651/223593669-b7ab83c5-016a-4a8c-9d80-f944a4dbf92d.png)
 
 ## 8. Autoscale (HPA)
- - // 소스코드 수행 및 부하테스트 캡쳐
-kubectl scale deploy gateway --replicas=2
-kubectl scale deploy message --replicas=2
-kubectl scale deploy movie --replicas=2
-kubectl scale deploy payment --replicas=2
-kubectl scale deploy reservation --replicas=2
-kubectl scale deploy review --replicas=2
-kubectl scale deploy viewpage --replicas=2
-
-
- - 영화 예매 요청이 적을때는 최소한의 Pod를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
+ 
+ - 요청이 적을때는 최소한의 Pod를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
  - 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 50프로를 넘어서면 replica 를 3개까지 늘려준다:
 ```
 kubectl autoscale deployment message --cpu-percent=50 --min=1 --max=3
