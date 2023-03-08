@@ -348,9 +348,16 @@ Pod변화
 ![kiali](https://user-images.githubusercontent.com/48465481/223629484-67600317-556b-4801-80fa-7cb3bb033fed.JPG)
 
 ## 13. Loggregation / Monitoring
+```
  - 마이크로서비스 통합 로깅 with EFK stack
  - MSA 모니터링 with installing Grafana
- - : EFK등 초반에 설치 후 테스트 하면서 그래프 변화되는거 캡쳐
+```
+ - Prometheus를 통한 모니터링
+
+모니터링1
+![프로메테우스1](https://user-images.githubusercontent.com/48465481/223632653-a685673a-d196-4951-b8c7-2a8f2ac655ea.JPG)
+모니터링2
+![프로메테우스2](https://user-images.githubusercontent.com/48465481/223632703-889ed17e-e8b2-4011-bfbd-2d6349b21507.JPG)
 
 ## 여기까지
 
