@@ -135,10 +135,6 @@
  - 고객은 현재 예매 상태를 언제든 확인 가능해야함
  - : View의 CQRS 복붙 및 설명
 ## 3. Compensation & Correlation 
- -어떠한 이벤트로 인하여 발생한 변경사항들에 대하여 고객이 원하거나 어떠한 기술적 이유로 인하여 해당 트랜잭션을 취소해야 하는 경우 이를 원복하거나 보상해주는 처리를 Compensation 이라고 한다. 그리고 해당 취소건에 대하여 여러개의 마이크로 서비스 내의 데이터간 상관 관계를 키값으로 연결하여 취소해야 하는데, 이러한 관계값에 대한 처리를 Correlation 이라고 한다.
- - 예매 취소시 다른 것들 모두 원복하기
- - : 리뷰생성/삭제에 따른 리뷰Cnt 변화 캡쳐
-
  - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소하는 방법으로 원복이 이루어진다.
 
  - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소
@@ -165,9 +161,7 @@
 ## 7. Deploy / Pipeline
  - :.jar 파일 생성해서 docker images 생성되어 있는거 캡쳐
 ## 8. Autoscale (HPA)
- - 클라우드의 리소스를 잘 활용하기 위해서는 요청이 적을때는 최소한의 Pod 를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
- - Auto Scale-Out 실습 (hpa: HorizontalPodAutoscaler 설정)
- - : 소스코드 수행 및 부하테스트 캡쳐
+ - // 소스코드 수행 및 부하테스트 캡쳐
 kubectl scale deploy gateway --replicas=2
 kubectl scale deploy message --replicas=2
 kubectl scale deploy movie --replicas=2
