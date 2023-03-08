@@ -318,7 +318,6 @@ Pod변화
 
 ![디블로이변경_get_pod](https://user-images.githubusercontent.com/48465481/223615221-8c71adcc-85a1-4462-80e2-414302363696.JPG)
  - ReadinessProbe를 설정 후 배포하면 없는 Availablity를 확인해 보면 100%로, 무정지 배포가 수행 된 것이 확인된다.
-테스트결과
 
 ![테스트결과](https://user-images.githubusercontent.com/48465481/223615255-6c6ea619-9ac7-4e0e-9066-01c47dae097b.JPG)
 
