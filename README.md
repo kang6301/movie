@@ -168,7 +168,17 @@
  - Ingress 는 Kubernetes 의 스펙일 뿐, 이를 실질적으로 지원하는 ingress controller 가 필요하기 때문이다. 다행히, 우리에겐 무료로 사용할 수 있는 nginx 인그레스 프로바이더를 사용할 수 있다.
  - :게이트웨이 External IP 통해서 명령날려서 수행되는거 캡쳐
 ## 7. Deploy / Pipeline
- - :.jar 파일 생성해서 docker images 생성되어 있는거 캡쳐
+ Docker Image 생성하여 Deploy 실행
+ 
+ - 생성된 Docker Image
+ //docker images 생성되어 있는거 캡쳐 
+ 
+ - Deployment.yaml 수정 (Image지정)
+![deply1](https://user-images.githubusercontent.com/100065651/223593654-64633de1-e68c-4a03-a3cd-f9108b4a4af7.png)
+
+- 배포 결과
+![deply2](https://user-images.githubusercontent.com/100065651/223593669-b7ab83c5-016a-4a8c-9d80-f944a4dbf92d.png)
+
 ## 8. Autoscale (HPA)
  - // 소스코드 수행 및 부하테스트 캡쳐
 kubectl scale deploy gateway --replicas=2
