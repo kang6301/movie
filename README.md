@@ -138,6 +138,25 @@
  -어떠한 이벤트로 인하여 발생한 변경사항들에 대하여 고객이 원하거나 어떠한 기술적 이유로 인하여 해당 트랜잭션을 취소해야 하는 경우 이를 원복하거나 보상해주는 처리를 Compensation 이라고 한다. 그리고 해당 취소건에 대하여 여러개의 마이크로 서비스 내의 데이터간 상관 관계를 키값으로 연결하여 취소해야 하는데, 이러한 관계값에 대한 처리를 Correlation 이라고 한다.
  - 예매 취소시 다른 것들 모두 원복하기
  - : 리뷰생성/삭제에 따른 리뷰Cnt 변화 캡쳐
+
+ - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소하는 방법으로 원복이 이루어진다.
+
+ - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소
+
+ - 초기 리뷰 생성
+```
+초기 리뷰 생성 및 확인하기
+```
+ - 생성된 리뷰 삭제 
+```
+리뷰삭제 날리기
+```
+ - 리뷰 카운트가 원복 된 것이 확인된다.
+```
+원복 명령어
+결과
+```
+
 ## 6. Gateway / Ingress
  - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
  - 주문, 상품, 배송 서비스를 분기하는 라우팅 룰을 가진 Ingress 를 생성한다
