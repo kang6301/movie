@@ -229,22 +229,24 @@
          });
 ```
 
-리뷰등록 전 영화1 (reviewCnt : 0)
+- 리뷰등록 전 영화1 (reviewCnt : 0)
 ![최초영화1](https://user-images.githubusercontent.com/48465481/223597974-0449add9-e010-490f-9479-66319c6f99cc.JPG)
-리뷰1등록
+- 리뷰1등록
 ![리뷰1등록](https://user-images.githubusercontent.com/48465481/223598023-10c50e9f-48b1-437f-9187-8e15721aa06a.JPG)
-리뷰2등록
+- 리뷰2등록
 ![리뷰2등록](https://user-images.githubusercontent.com/48465481/223598059-b585217b-bb6f-4a9e-8cba-fba7baa43841.JPG)
-리뷰3등록
+- 리뷰3등록
 ![리뷰3등록](https://user-images.githubusercontent.com/48465481/223598102-fbf07be1-329a-4958-b0f9-61ffaed89290.JPG)
-리뷰등록 후 영화1 (reviewCnt : 3)
+- 리뷰등록 후 영화1 (reviewCnt : 3)
 ![리뷰등록후영화1](https://user-images.githubusercontent.com/48465481/223598150-80f8e3b2-5189-43ec-9a09-c8442682dfba.JPG)
-리뷰삭제 및 영화1 (reviewCnt : 2)
+- 리뷰삭제 및 영화1 (reviewCnt : 2)
 ![리뷰3삭제후영화1](https://user-images.githubusercontent.com/48465481/223598182-4a1b7fe6-25c3-40e4-ac4f-70f0d75b7241.JPG)
 
 ## 6. Gateway / Ingress
  - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
+```
 kubectl get svc
+```
 ![kubectl_get_svc](https://user-images.githubusercontent.com/48465481/223598699-683600b7-f859-44e0-a87e-bddc63948076.JPG)
 위 3. Compensation & Correlation에서 확인 할 수 있듯 API Gateway를 통하여 서비스들의 엔드포인트 단일화 함.
 
