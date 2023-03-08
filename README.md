@@ -146,8 +146,25 @@
         payment.setMovieId(reservationCreated.getMovieId());
         repository().save(payment);
 ```
+ - payment에서 paymentCancelled 이벤트가 발생 할 경우, reservation 서비스로 전달되어 예약취소가 이루어진다
 ```
+    @PostUpdate
+    public void onPostUpdate(){
 
+
+        PaymentCancelled paymentCancelled = new PaymentCancelled(this);
+        paymentCancelled.publishAfterCommit();
+
+    }
+```
+```
+    public static void confirmCancel(PaymentCancelled paymentCancelled){
+
+        repository().findById(paymentCancelled.getRsvId()).ifPresent(reservation->{
+            
+            repository().delete(reservation);
+
+         });
 ```
 
 ## 2. CQRS : 명령과 쿼리 분리
