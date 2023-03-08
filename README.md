@@ -223,7 +223,9 @@ kubectl autoscale deployment viewpage --cpu-percent=50 --min=1 --max=3
 // 명령어
 ```
 어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.
-eadinessProbe 가 없는 상태에서 배포 진행
+```
+///
+```
 
 ## 9. Zero-downtime deploy (Readiness probe)
  - // https://intro-kor.msaez.io/example-scenario/accommodation-reservation/#%C2%B7-%EB%AC%B4%EC%A0%95%EC%A7%80-%EC%9E%AC%EB%B0%B0%ED%8F%AC  참조
