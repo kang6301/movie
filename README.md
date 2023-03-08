@@ -334,8 +334,9 @@ Pod변화
 ![셀프힐링](https://user-images.githubusercontent.com/48465481/223627692-33900933-36e2-48f2-af82-c1dce208a23b.JPG)
 
 ## 12. Apply Service Mesh
- - 트래픽 제어? 분산?
- - : istio 서비스 초반에 설치 후 테스트 하면서 그래프 변화되는거 캡쳐 
+ - kiali
+![kiali](https://user-images.githubusercontent.com/48465481/223629484-67600317-556b-4801-80fa-7cb3bb033fed.JPG)
+
 ## 13. Loggregation / Monitoring
  - 마이크로서비스 통합 로깅 with EFK stack
  - MSA 모니터링 with installing Grafana
