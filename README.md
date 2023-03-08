@@ -132,7 +132,7 @@
  - 예약이 취소되면 재고량이 증가한다
  - : 최종모델에서 Pub/Sub으로 연결된거 보여줌. kafka 로그를 보여주던가.
 ## 2. CQRS : 명령과 쿼리 분리
- - Movie 서비스와 Reservation 서비스의상세모델을 참조하여 Query 모델(Materialized View)을 설계하였다.
+ - Movie 서비스와 Reservation 서비스의 상세 모델을 참조하여 Query 모델(Materialized View)을 설계하였다.
 ```
 // 초록색 스티커 나온 모델링 화면 캡처
 ```
