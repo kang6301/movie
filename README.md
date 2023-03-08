@@ -246,20 +246,6 @@
 리뷰삭제 및 영화1 (reviewCnt : 2)
 ![리뷰3삭제후영화1](https://user-images.githubusercontent.com/48465481/223598182-4a1b7fe6-25c3-40e4-ac4f-70f0d75b7241.JPG)
 
- - 초기 리뷰 생성
-```
-초기 리뷰 생성 및 확인하기
-```
- - 생성된 리뷰 삭제 
-```
-리뷰삭제 날리기
-```
- - 리뷰 카운트가 원복 된 것이 확인된다.
-```
-원복 명령어
-결과
-```
-
 ## 6. Gateway / Ingress
  - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
 kubectl get svc
