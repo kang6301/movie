@@ -132,8 +132,19 @@
  - 예약이 취소되면 재고량이 증가한다
  - : 최종모델에서 Pub/Sub으로 연결된거 보여줌. kafka 로그를 보여주던가.
 ## 2. CQRS : 명령과 쿼리 분리
- - 고객은 현재 예매 상태를 언제든 확인 가능해야함
- - : View의 CQRS 복붙 및 설명
+ - Movie 서비스와 Reservation 서비스의상세모델을 참조하여 Query 모델(Materialized View)을 설계하였다.
+```
+// 초록색 스티커 나온 모델링 화면 캡처
+```
+ - Read Model CRUD 상세설계
+```
+// CQRS 입력한거 캡처
+```
+- 영화 예약 후, 예약 서비스가 죽더라도 예매 현황이 조회됨이 확인된다
+```
+// 보여주기
+```
+
 ## 3. Compensation & Correlation 
  - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소하는 방법으로 원복이 이루어진다.
 
