@@ -139,7 +139,9 @@
  - Read Model CRUD 상세설계
 
 ![CQRS2](https://user-images.githubusercontent.com/48465481/223595972-8f65094e-4b3f-41ab-9dcb-eea700a8d1b6.JPG)
+
 ![CQRS3](https://user-images.githubusercontent.com/48465481/223596025-74ec4b8b-c60e-4430-bff4-116116790ded.JPG)
+
 ![CQRS4](https://user-images.githubusercontent.com/48465481/223596114-7454b81b-5801-462f-a683-404c036469f7.JPG)
 
 - 영화 예약 후, 예약 서비스가 죽더라도 예매 현황이 조회됨이 확인된다
