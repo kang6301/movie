@@ -188,6 +188,51 @@
 ## 3. Compensation & Correlation 
  - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소하는 방법으로 원복이 이루어진다.
 
+ - review 생성 시의 코드
+```
+    @PostPersist
+    public void onPostPersist(){
+
+
+        ReviewCreated reviewCreated = new ReviewCreated(this);
+        reviewCreated.publishAfterCommit();
+
+    }
+```
+```
+    public static void updateReviewCnt(ReviewCreated reviewCreated){
+
+        repository().findById(reviewCreated.getMovieId()).ifPresent(movie->{
+            
+            movie.setReviewCnt(movie.getReviewCnt() + 1);
+            repository().save(movie);
+
+         });
+        
+    }
+```
+ - 리뷰 삭제 시 코드(Correlation Key를 통해 원복 수행)
+```
+    @PreRemove
+    public void onPreRemove(){
+
+
+        ReviewDeleted reviewDeleted = new ReviewDeleted(this);
+        reviewDeleted.publishAfterCommit();
+
+    }
+```
+```
+    public static void updateReviewCnt(ReviewDeleted reviewDeleted){
+
+        repository().findById(reviewDeleted.getMovieId()).ifPresent(movie->{
+            
+            movie.setReviewCnt(movie.getReviewCnt() - 1);
+            repository().save(movie);
+
+         });
+```
+
 리뷰등록 전 영화1 (reviewCnt : 0)
 ![최초영화1](https://user-images.githubusercontent.com/48465481/223597974-0449add9-e010-490f-9479-66319c6f99cc.JPG)
 리뷰1등록
