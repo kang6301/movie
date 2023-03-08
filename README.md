@@ -282,18 +282,18 @@ kubectl autoscale deployment reservation --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment review --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment viewpage --cpu-percent=50 --min=1 --max=3
 ```
-워크로드를 2분 동안 걸어준다.
+ - 워크로드를 걸어준다.
 ```
 kubectl exec -it siege -- /bin/bash
 siege -c100 -t60S -r10 -v --content-type "application/json" 'http://movie:8080/movies POST {"desc": "영화들"}'
 ```
-어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.
 
 디플로이 수정
 ![디플로이수정](https://user-images.githubusercontent.com/48465481/223614226-a6a26e06-3243-44ec-b56f-b70d3b7badb2.JPG)
 기준
 ![부하전](https://user-images.githubusercontent.com/48465481/223614303-da358639-94f0-407b-b38a-79ec33aad099.JPG)
-부하 후 movie pod 추가 생성
+
+ - 어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.(부하 후 movie pod 추가 생성)
 ![부하후(movie추가생성)](https://user-images.githubusercontent.com/48465481/223614404-d133ab81-ef6a-4942-b85a-835f28c6526f.JPG)
 
 ## 9. Zero-downtime deploy (Readiness probe)
