@@ -151,6 +151,7 @@
 
 ## 3. Compensation & Correlation 
  - ReviewCreated라는 이벤트가 발행되면 Movie의 reviewCnt가 증가한다. ReviewDeleted 이벤트가 발생 되면 reviewCnt가 다시 원복되는 Compensation이 수행된다. Review에 대해서는 해당 건의 id를 상관관계 키 (Correlation Key)로 카운트를 감소하는 방법으로 원복이 이루어진다.
+
 리뷰등록 전 영화1 (reviewCnt : 0)
 ![최초영화1](https://user-images.githubusercontent.com/48465481/223597974-0449add9-e010-490f-9479-66319c6f99cc.JPG)
 리뷰1등록
@@ -224,6 +225,7 @@ kubectl exec -it siege -- /bin/bash
 siege -c100 -t60S -r10 -v --content-type "application/json" 'http://movie:8080/movies POST {"desc": "영화들"}'
 ```
 어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.
+
 디플로이 수정
 ![디플로이수정](https://user-images.githubusercontent.com/48465481/223614226-a6a26e06-3243-44ec-b56f-b70d3b7badb2.JPG)
 기준
