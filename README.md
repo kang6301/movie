@@ -127,11 +127,9 @@
 # 구현:
 
 ## 1. Saga (Pub-Sub)
- - 영화예매 취소 가능
- - 예매 취소시 해당 좌석이 다시 예약 가능한 상태가 됨
- - 예약이 취소되면 재고량이 증가한다
- - : 위 최종모델에서 서비스간 호출 시 Pub/Sub으로 호출함.
 
+ - 각 서비스간 Pub-Sub을 구현하였다.
+ - reservation 에서 reservationCreated 이벤트가 발생 할 경우, payment 서비스로 전달된다.
 ```
     @PostPersist
     public void onPostPersist(){
