@@ -180,9 +180,10 @@
 
 ## 6. Gateway / Ingress
  - API Gateway를 사용하여 마이크로 서비스들의 엔드포인트 단일화
- - 주문, 상품, 배송 서비스를 분기하는 라우팅 룰을 가진 Ingress 를 생성한다
- - Ingress 는 Kubernetes 의 스펙일 뿐, 이를 실질적으로 지원하는 ingress controller 가 필요하기 때문이다. 다행히, 우리에겐 무료로 사용할 수 있는 nginx 인그레스 프로바이더를 사용할 수 있다.
- - :게이트웨이 External IP 통해서 명령날려서 수행되는거 캡쳐
+kubectl get svc
+![kubectl_get_svc](https://user-images.githubusercontent.com/48465481/223598699-683600b7-f859-44e0-a87e-bddc63948076.JPG)
+위 3. Compensation & Correlation에서 확인 할 수 있듯 API Gateway를 통하여 서비스들의 엔드포인트 단일화 함.
+
 ## 7. Deploy / Pipeline
  Docker Image 생성하여 Deploy 실행
  
