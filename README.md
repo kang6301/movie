@@ -333,7 +333,7 @@ Pod변화
 
 ## 10. Persistence Volume/ConfigMap/Secret
  - 파일시스템 (볼륨) 연결과 데이터베이스 설정
- - : 라운지에서 보고 따라 하던가 포기하던가;
+
 ## 11. Self-healing (liveness probe)
  - 셀프힐링 실습 (livenessProbe)
 
