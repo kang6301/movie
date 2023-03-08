@@ -157,23 +157,26 @@ kubectl scale deploy reservation --replicas=2
 kubectl scale deploy review --replicas=2
 kubectl scale deploy viewpage --replicas=2
 
+
+ - 영화 예매 요청이 적을때는 최소한의 Pod를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
+ - 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 50프로를 넘어서면 replica 를 3개까지 늘려준다:
+```
 kubectl autoscale deployment message --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment movie --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment payment --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment reservation --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment review --cpu-percent=50 --min=1 --max=3
 kubectl autoscale deployment viewpage --cpu-percent=50 --min=1 --max=3
-
- - 영화 예매 요청이 적을때는 최소한의 Pod를 유지한 후에 요청이 많아질 경우 Pod를 확장하여 요청을 처리할 수 있다.
- 결제서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 15프로를 넘어서면 replica 를 10개까지 늘려준다:
-```
-명령어
 ```
 워크로드를 2분 동안 걸어준다.
 ```
-명령어
+// 명령어
 ```
 어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.
+```
+// 스케일 아웃된 결과
+```
+
 ## 9. Zero-downtime deploy (Readiness probe)
  - 배포시 다운타임의 존재 여부를 확인하기 위하여, siege 라는 부하 테스트 툴을 사용한다.
  - Kafka 가 설치되어있어야 한다
