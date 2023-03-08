@@ -119,8 +119,8 @@
 ### 이벤트 도출 완료
 ![부적격이벤트탈락](https://user-images.githubusercontent.com/48465481/223027186-1feeb7fa-7a31-4e67-9684-c3b4fcd75e1a.JPG)
 
-### 완성모형
-![image](https://user-images.githubusercontent.com/48465481/223027507-874b4fee-14b3-457f-8fb8-428602499db5.png)
+### 최종모델
+![최종모델](https://user-images.githubusercontent.com/48465481/223596903-6b6e97e7-e6d5-4d9e-8e4f-8bd57b46465b.JPG)
 
 
 
