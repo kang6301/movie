@@ -195,14 +195,28 @@ kubectl autoscale deployment viewpage --cpu-percent=50 --min=1 --max=3
 // 명령어
 ```
 어느정도 시간이 지나면 임계치에 도달하여 스케일 아웃 되는 것이 확인된다.
-```
-// 스케일 아웃된 결과
-```
+eadinessProbe 가 없는 상태에서 배포 진행
 
 ## 9. Zero-downtime deploy (Readiness probe)
- - 배포시 다운타임의 존재 여부를 확인하기 위하여, siege 라는 부하 테스트 툴을 사용한다.
- - Kafka 가 설치되어있어야 한다
- - :https://intro-kor.msaez.io/example-scenario/accommodation-reservation/#%C2%B7-%EB%AC%B4%EC%A0%95%EC%A7%80-%EC%9E%AC%EB%B0%B0%ED%8F%AC  참조
+ - // https://intro-kor.msaez.io/example-scenario/accommodation-reservation/#%C2%B7-%EB%AC%B4%EC%A0%95%EC%A7%80-%EC%9E%AC%EB%B0%B0%ED%8F%AC  참조
+
+ - ReadinessProbe 가 없는 상태에서 배포 진행 했을때, Availablity를 확인해 보면 100% 미만으로 떨어진 것이 확인된다.
+```
+// 부하주기
+// 배포시작
+``
+```
+// 조회결
+``
+
+- ReadinessProbe를 설정 후 배포하면 없는 Availablity를 확인해 보면 100%로, 무정지 배포가 수행 된 것이 확인된다.
+```
+// 부하주기
+// 배포시작
+``
+```
+// 조회결과
+``
 ## 10. Persistence Volume/ConfigMap/Secret
  - 파일시스템 (볼륨) 연결과 데이터베이스 설정
  - : 라운지에서 보고 따라 하던가 포기하던가;
