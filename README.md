@@ -230,7 +230,7 @@
 ```
 
 - 리뷰등록 전 영화1 (reviewCnt : 0)
-- 
+
 ![최초영화1](https://user-images.githubusercontent.com/48465481/223597974-0449add9-e010-490f-9479-66319c6f99cc.JPG)
 - 리뷰1등록
 
