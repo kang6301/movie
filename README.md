@@ -327,7 +327,12 @@ Pod변화
  - : 라운지에서 보고 따라 하던가 포기하던가;
 ## 11. Self-healing (liveness probe)
  - 셀프힐링 실습 (livenessProbe)
- - : 서비스의 야믈파일에 livenessProbe들 캡쳐
+
+디플로이
+![셀프힐링_디플로이](https://user-images.githubusercontent.com/48465481/223627620-fcf958f2-67bf-403c-8ea1-c58c74de4f70.JPG)
+리스타트 확인
+![셀프힐링](https://user-images.githubusercontent.com/48465481/223627692-33900933-36e2-48f2-af82-c1dce208a23b.JPG)
+
 ## 12. Apply Service Mesh
  - 트래픽 제어? 분산?
  - : istio 서비스 초반에 설치 후 테스트 하면서 그래프 변화되는거 캡쳐 
