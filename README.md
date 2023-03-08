@@ -295,36 +295,32 @@ siege -c100 -t60S -r10 -v --content-type "application/json" 'http://movie:8080/m
 ![부하후(movie추가생성)](https://user-images.githubusercontent.com/48465481/223614404-d133ab81-ef6a-4942-b85a-835f28c6526f.JPG)
 
 ## 9. Zero-downtime deploy (Readiness probe)
- - // https://intro-kor.msaez.io/example-scenario/accommodation-reservation/#%C2%B7-%EB%AC%B4%EC%A0%95%EC%A7%80-%EC%9E%AC%EB%B0%B0%ED%8F%AC  참조
 
  - ReadinessProbe 가 없는 상태에서 배포 진행 했을때, Availablity를 확인해 보면 100% 미만으로 떨어진 것이 확인된다.
-```
-// 부하주기
-// 배포시작
-```
-```
-// 조회결
-```
 
-- ReadinessProbe를 설정 후 배포하면 없는 Availablity를 확인해 보면 100%로, 무정지 배포가 수행 된 것이 확인된다.
-```
-// 부하주기
-// 배포시작
-```
-```
-// 조회결과
-```
 디플로이_변경전
+
 ![디폴리이_변경전](https://user-images.githubusercontent.com/48465481/223614902-d9fb17ac-d8b8-4137-b17b-d87f0bc4eb0d.JPG)
+
 디플로이_변경후
+
 ![디폴리이_변경후](https://user-images.githubusercontent.com/48465481/223614953-5fd746a2-65c4-4724-9d33-3ab479570a51.JPG)
+
 부하수행
+
 ![부하수행](https://user-images.githubusercontent.com/48465481/223615052-96132988-41e1-488d-86b2-696fbc1b4008.JPG)
+
 디플로이변경
+
 ![디플로이변경](https://user-images.githubusercontent.com/48465481/223615105-f846e122-dc44-43ce-9b91-16a45c5c2d99.JPG)
+
+ - ReadinessProbe를 설정 후 배포하면 없는 Availablity를 확인해 보면 100%로, 무정지 배포가 수행 된 것이 확인된다.
 Pod변화
+
 ![디블로이변경_get_pod](https://user-images.githubusercontent.com/48465481/223615221-8c71adcc-85a1-4462-80e2-414302363696.JPG)
+
 테스트결과
+
 ![테스트결과](https://user-images.githubusercontent.com/48465481/223615255-6c6ea619-9ac7-4e0e-9066-01c47dae097b.JPG)
 
 
