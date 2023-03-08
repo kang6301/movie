@@ -127,6 +127,17 @@
 ## 1. Saga (Pub-Sub)
 
  - 각 서비스간 Pub-Sub을 구현하였다.
+ - Kafka 구독 부분
+```
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whatever(@Payload String eventString){}
+
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='ReservationConfirmed'")
+    public void wheneverReservationConfirmed_SendConfirmMsg(@Payload ReservationConfirmed reservationConfirmed){
+
+        ReservationConfirmed event = reservationConfirmed;
+        System.out.println("\n\n##### listener SendConfirmMsg : " + reservationConfirmed + "\n\n");
+``` 
  - reservation 에서 reservationCreated 이벤트가 발생 할 경우, payment 서비스로 전달된다.
 ```
     @PostPersist
