@@ -253,6 +253,20 @@ siege -c100 -t60S -r10 -v --content-type "application/json" 'http://movie:8080/m
 ```
 // 조회결과
 ```
+디플로이_변경전
+![디폴리이_변경전](https://user-images.githubusercontent.com/48465481/223614902-d9fb17ac-d8b8-4137-b17b-d87f0bc4eb0d.JPG)
+디플로이_변경후
+![디폴리이_변경후](https://user-images.githubusercontent.com/48465481/223614953-5fd746a2-65c4-4724-9d33-3ab479570a51.JPG)
+부하수행
+![부하수행](https://user-images.githubusercontent.com/48465481/223615052-96132988-41e1-488d-86b2-696fbc1b4008.JPG)
+디플로이변경
+![디플로이변경](https://user-images.githubusercontent.com/48465481/223615105-f846e122-dc44-43ce-9b91-16a45c5c2d99.JPG)
+Pod변화
+![디블로이변경_get_pod](https://user-images.githubusercontent.com/48465481/223615221-8c71adcc-85a1-4462-80e2-414302363696.JPG)
+테스트결과
+![테스트결과](https://user-images.githubusercontent.com/48465481/223615255-6c6ea619-9ac7-4e0e-9066-01c47dae097b.JPG)
+
+
 ## 10. Persistence Volume/ConfigMap/Secret
  - 파일시스템 (볼륨) 연결과 데이터베이스 설정
  - : 라운지에서 보고 따라 하던가 포기하던가;
