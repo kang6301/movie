@@ -188,7 +188,7 @@ kubectl get svc
  Docker Image 생성하여 Deploy 실행
  
  - 생성된 Docker Image
- //docker images 생성되어 있는거 캡쳐 
+ ![dockerimages](https://user-images.githubusercontent.com/48465481/223599311-8e9c55d7-acbc-48dd-bc5d-dd50e7590167.JPG)
  
  - Deployment.yaml 수정 (Image지정)
 ![deply1](https://user-images.githubusercontent.com/100065651/223593654-64633de1-e68c-4a03-a3cd-f9108b4a4af7.png)
