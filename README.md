@@ -131,6 +131,27 @@
  - 예매 취소시 해당 좌석이 다시 예약 가능한 상태가 됨
  - 예약이 취소되면 재고량이 증가한다
  - : 위 최종모델에서 서비스간 호출 시 Pub/Sub으로 호출함.
+
+```
+    @PostPersist
+    public void onPostPersist(){
+
+
+        ReservationCreated reservationCreated = new ReservationCreated(this);
+        reservationCreated.publishAfterCommit();
+``` 
+```
+    public static void approvePayment(ReservationCreated reservationCreated){
+
+        Payment payment = new Payment();
+        payment.setRsvId(reservationCreated.getRsvId());
+        payment.setMovieId(reservationCreated.getMovieId());
+        repository().save(payment);
+```
+```
+
+```
+
 ## 2. CQRS : 명령과 쿼리 분리
  - Movie 서비스와 Reservation 서비스의 상세 모델을 참조하여 Query 모델(Materialized View)을 설계하였다.
 
