@@ -177,6 +177,7 @@
 ![deply1](https://user-images.githubusercontent.com/100065651/223593654-64633de1-e68c-4a03-a3cd-f9108b4a4af7.png)
 
 - 배포 결과
+
 ![deply2](https://user-images.githubusercontent.com/100065651/223593669-b7ab83c5-016a-4a8c-9d80-f944a4dbf92d.png)
 
 ## 8. Autoscale (HPA)
