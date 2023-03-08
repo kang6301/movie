@@ -124,7 +124,7 @@
 
 
 
-# 구현:
+# 구현
 
 ## 1. Saga (Pub-Sub)
 
@@ -328,9 +328,10 @@ Pod변화
 ## 11. Self-healing (liveness probe)
  - 셀프힐링 실습 (livenessProbe)
 
-디플로이
+ - 디플로이
 ![셀프힐링_디플로이](https://user-images.githubusercontent.com/48465481/223627620-fcf958f2-67bf-403c-8ea1-c58c74de4f70.JPG)
-리스타트 확인
+
+- 리스타트 확인
 ![셀프힐링](https://user-images.githubusercontent.com/48465481/223627692-33900933-36e2-48f2-af82-c1dce208a23b.JPG)
 
 ## 12. Apply Service Mesh
